@@ -1,40 +1,23 @@
 /**
- * Created by HyeRyeongSong on 2017. 4. 4..
+ * Created by HyeRyeongSong on 2017. 3. 28..
  */
 public class Exercise5
 {
     public static void main(String[] args)
     {
-        int[][] iArray = new int[4][4];
-        boolean[] bArray = new boolean[16];
-        int iNum1 = 0, iNum2 = 0;
-        int iLocation =0;
-        for(boolean e: bArray)
+        String str[] = {" 박수 한번", " 박수 두번"};
+        int res, num, numberOf369 = 0;
+        for(int i=0; i<100; i++)
         {
-            e = false;
-        }
-        for(int i=0; i<8; ++i)
-        {
-            while (true)
+            num = i;
+            for(res = num % 10; num > 0; res = num % 10)
             {
-                iLocation = (int) Math.round(Math.random() * 15 + 1);
-                if (bArray[iLocation] == false)
-                {
-                    bArray[iLocation] = true;
-                    iNum1 = iLocation / 4;
-                    iNum2 = iLocation % 4;
-                    break;
-                }
+                if(res == 3 || res == 6 || res == 9) numberOf369++;
+                num = num / 10 ;
             }
-            iArray[iNum1][iNum2] = (int) Math.round(Math.random() * 9 + 1);
-        }
-        for(int i=0; i<iArray.length; ++i)
-        {
-            for(int j=0; j<iArray[i].length; ++j)
-            {
-                System.out.print(iArray[i][j] + "\t");
-            }
-            System.out.println();
+            if(numberOf369 > 0)
+                System.out.println(i + str[numberOf369-1]);
+            numberOf369 = 0;
         }
     }
 }

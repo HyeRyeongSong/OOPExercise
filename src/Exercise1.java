@@ -1,25 +1,34 @@
+import java.util.*;
+
 /**
- * Created by HyeRyeongSong on 2017. 4. 4..
+ * Created by HyeRyeongSong on 2017. 3. 28..
  */
 public class Exercise1
 {
     public static void main(String[] args)
     {
-        int[][] iArray = {{78, 48, 78, 98},{99, 92},{29, 64, 83}, {34, 78, 92, 56}};
-        int iSum = 0;
-        double dAverage = 0;
-        for(int i=0; i<iArray.length; ++i)
+        System.out.print("두 점 (x1, y1), (x2, y2)의 좌표를 입력하시오>> ");
+        Scanner scanner = new Scanner(System.in);
+        int iX1 = scanner.nextInt();
+        int iY1 = scanner.nextInt();
+        int iX2 = scanner.nextInt();
+        int iY2 = scanner.nextInt();
+
+        if(iX1 >= 50 && iX1 <= 100)
         {
-            iSum = 0;
-            for(int j=0; j<iArray[i].length; ++j)
+            if(iY1 >= 50 && iY1 <= 100)
             {
-                System.out.println("(" + i + ", " + j + ") = " + iArray[i][j]);
-                iSum += iArray[i][j];
+                System.out.println("사각형이 겹칩니다.");
             }
-            dAverage = (double)iSum / iArray[i].length;
-            System.out.println(i + "번째 행의 합: " + iSum);
-            System.out.println(i + "번째 행의 평균: " + dAverage);
-            System.out.println();
         }
+
+        else if(iX2 >= 50 && iX2 <= 100)
+        {
+            if(iY2 >= 50 && iY2 <= 100)
+            {
+                System.out.println("사각형이 겹칩니다.");
+            }
+        }
+
     }
 }

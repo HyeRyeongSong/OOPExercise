@@ -1,36 +1,38 @@
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
- * Created by HyeRyeongSong on 2017. 4. 4..
+ * Created by HyeRyeongSong on 2017. 3.28..
  */
 public class Exercise2
 {
     public static void main(String[] args)
     {
-        int[] prime = new int[1001];
-        int iCheck = 0;
-        for(int i=2; i<prime.length; ++i)
+        String str = "abcdefghijklmnopqrstuvwxyz";
+        int iIndex;
+        System.out.print("알파벳 한 문자를 입력하시오>> ");
+        InputStreamReader rd = new InputStreamReader(System.in);
+        char c = 0;
+        try
         {
-            prime[i] = 1;
+            c = (char) rd.read();
+        } catch (IOException e)
+        {
+            System.out.println("키보드 입력 중 오류가 발생했습니다.");
         }
-        for(int i=2; i<prime.length; ++i)
+        for(int i=0; i<str.length(); ++i)
         {
-            for(int j=i+1; j<prime.length; ++j)
+            if(c == str.charAt(i))
             {
-                if(j % i == 0)
+                for(int j=i; j>=0; --j)
                 {
-                    prime[j] = 0;
+                    for(int k=0; k<=j; ++k)
+                    {
+                        System.out.print(str.charAt(k));
+                    }
+                    System.out.println();
                 }
-            }
-        }
-        for(int i=0; i<prime.length; ++i)
-        {
-            if(prime[i] == 1)
-            {
-                System.out.print(i + "\t");
-                ++iCheck;
-            }
-            if(iCheck != 0 && iCheck % 20 == 0)
-            {
-                System.out.println();
+                break;
             }
         }
     }
