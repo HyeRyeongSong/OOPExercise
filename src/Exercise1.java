@@ -1,34 +1,73 @@
-import java.util.*;
-
 /**
- * Created by HyeRyeongSong on 2017. 3. 28..
+ * Created by HyeRyeongSong on 2017. 4. 18..
  */
 public class Exercise1
 {
-    public static void main(String[] args)
+    public static void main(String args[]) {
+        Rectangle r = new Rectangle();
+        Rectangle s = new Rectangle(1, 1, 2, 3);
+        r.show();
+        s.show();
+        System.out.println(s.square());
+        r.set(-2, 2, -1, 4);
+        r.show();
+        System.out.println(r.square());
+        if(r.equals(s))
+        {
+            System.out.println("두 사각형은 같습니다.");
+        }
+    }
+}
+
+class Rectangle
+{
+    int x1, y1, x2, y2;
+
+    public Rectangle(int x1, int y1, int x2, int y2)
     {
-        System.out.print("두 점 (x1, y1), (x2, y2)의 좌표를 입력하시오>> ");
-        Scanner scanner = new Scanner(System.in);
-        int iX1 = scanner.nextInt();
-        int iY1 = scanner.nextInt();
-        int iX2 = scanner.nextInt();
-        int iY2 = scanner.nextInt();
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
+    }
+    public  Rectangle()
+    {}
 
-        if(iX1 >= 50 && iX1 <= 100)
+    void set(int x1, int y1, int x2, int y2)
+    {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
+    }
+
+    int square()
+    {
+        int iNumOfx = x1 - x2;
+        int iNumOfy = y1 - y2;
+        if(x1 < x2)
         {
-            if(iY1 >= 50 && iY1 <= 100)
-            {
-                System.out.println("사각형이 겹칩니다.");
-            }
+            iNumOfx *= (-1);
         }
-
-        else if(iX2 >= 50 && iX2 <= 100)
+        if(y1 < y2)
         {
-            if(iY2 >= 50 && iY2 <= 100)
-            {
-                System.out.println("사각형이 겹칩니다.");
-            }
+            iNumOfy *= (-1);
         }
+        return iNumOfx * iNumOfy;
+    }
 
+    void show()
+    {
+        System.out.println("(x1, y1) = (" + x1 + ", " + y1 + ")");
+        System.out.println("(x2, y2) = (" + x2 + ", " + y2 + ")");
+        System.out.println("사각형의 넓이 = " + square());
+    }
+
+    boolean equals(Rectangle r)
+    {
+        if(square() == r.square())
+            return true;
+
+        return false;
     }
 }

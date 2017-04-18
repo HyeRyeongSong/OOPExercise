@@ -1,35 +1,39 @@
 /**
- * Created by HyeRyeongSong on 2017. 3.28..
+ * Created by HyeRyeongSong on 2017. 4. 18..
  */
-
-import java.util.Scanner;
-
 public class Exercise4
 {
     public static void main(String[] args)
     {
-        Scanner scanner = new Scanner(System.in);
-        int[] iArray = new int[10];
-        System.out.println("정수 10개를 입력하세요");
-        for(int i=0; i<iArray.length; ++i)
-        {
-            iArray[i] = scanner.nextInt();
-        }
-        for(int i=0; i<iArray.length -1; ++i)
-        {
-            for(int j=0; j<iArray.length -1; ++j)
-            {
-                if(iArray[j] > iArray[j+1])
-                {
-                    int iTmp = iArray[j];
-                    iArray[j] = iArray[j + 1];
-                    iArray[j+1] = iTmp;
-                }
-            }
-        }
-        for(int e: iArray)
-        {
-            System.out.print(e + "\t");
-        }
+        Cylinder cylinder = new Cylinder(2.8, 5.6);
+        Circle circle = new Circle(2.8);
+        Cylinder cylinder1 = new Cylinder(circle, 5.6);
+        System.out.println("부피: " + cylinder.getVolume());
+        System.out.println("부피: " + cylinder1.getVolume());
+
+
+    }
+}
+
+class Cylinder
+{
+    private Circle circle;
+    private double dheight;
+
+    Cylinder(Circle circle, double dheight)
+    {
+        this.circle = circle;
+        this.dheight = dheight;
+    }
+
+    Cylinder(double radius, double dheight)
+    {
+        this.circle = new Circle(radius);
+        this.dheight = dheight;
+    }
+
+    double getVolume()
+    {
+        return circle.PI * circle.radius * circle.radius * dheight;
     }
 }
