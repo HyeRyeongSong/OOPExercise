@@ -10,11 +10,11 @@ class A implements I1, I2   //최소 하나라도 구현이 된 애들 중에 de
 
     //해결책을 이를 새로 구현해야함
     //이름이 겹치는 게 하나라도 있으면 구현 클래스에서 명시적으로 이름 겹치는 것을 만들어주는 것이 해결책임
-    public void f2()
+    /*public void f2()
     {
-        I1.super.f2();
+        I2.super.f2();
         System.out.println("f2 in A");
-    }
+    }*/
 
 }
 
@@ -26,23 +26,26 @@ interface I1
     {
         System.out.println("f2 in I1");
     }
-    static I1 getI1()
+    /*static I1 getI1()
     {
         return new A();
-    }
+    }*/
 }
 
 interface I2
 {
     void f();
-    void f2();
+    default  void f2()
+    {
+        System.out.println("f in I2");
+    }
 }
 
 public class Test
 {
     public static void main(String[] args)
     {
-        I1 vari1 = I1.getI1();
+       // I1 vari1 = I1.getI1();
 
         A var = new A();
         var.f2();
