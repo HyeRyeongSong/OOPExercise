@@ -1,7 +1,7 @@
 /**
  * Created by HyeRyeongSong on 2017. 5. 16..
  */
-class A implements I1, I2   //최소 하나라도 구현이 된 애들 중에 default 메소드가 있으면 이름 충돌이 난다
+class A extends Super implements I1, I2   //최소 하나라도 구현이 된 애들 중에 default 메소드가 있으면 이름 충돌이 난다
 {
     public void f()
     {
@@ -18,6 +18,15 @@ class A implements I1, I2   //최소 하나라도 구현이 된 애들 중에 de
 
 }
 
+
+//Super class의 구현으로 이름충돌 에러 사라짐
+class Super
+{
+    public void f2()
+    {
+        System.out.println("f2 in Super");
+    }
+}
 
 interface I1
 {
